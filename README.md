@@ -1,5 +1,5 @@
 # Seeburg-IO
-Interfacing Rasberry PI to Seeburg 3w1
+Interfacing Rasberry PI to a Seeburg 3w1
 
 Intro
 
@@ -39,11 +39,10 @@ The decoding is simple maths as shown in the code.
 Running
 
 Must be run as root
-
 ./pi-seeburg
+
 You can run with debug:
-
 ./pi-seeburg -d
-You can pass the key combo through to an external programme:
 
+You can pass the key combo through to an external programme:
 ./pi-seeburg -p 'sonos/sonos-wallbox "Dining Room"'
