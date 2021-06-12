@@ -2,7 +2,8 @@
 Interfacing Rasberry PI to Seeburg 3w1
 
 Intro
-Based on Phil Levin's Raspberry Pi GPIO Interrupt demo code. Interfacing the RasPi with my 1950s Seeburg Wall-O-Matic 100 (3w1) to decode the pulse train into the key combination that was pressed. Later on forward the pulse to a library of music titles and select right one.
+
+Based on Phil Levin's Raspberry PI GPIO Interrupt demo code. Interfacing the RasPi with my 1950s Seeburg Wall-O-Matic 100 (3w1) to decode the pulse train into the key combination that was pressed. Later on forward the pulse to a library of music titles and select right one.
 
 Interfacing with the PI
 The wallbox works on 25V AC. A circuit is used from a hardware project of Scott M. Baker to pass pulses at this voltage to the GPIO pins of the RasPi at the RasPi's required small current (around 2mA) @ 3.3V DC.
