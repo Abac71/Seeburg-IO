@@ -14,7 +14,7 @@
 #include <wiringPi.h>
 
 // Which GPIO pin we're using
-#define PIN 2
+#define PIN 5
 
 // How much time a change must be since the last in order to count as a change
 #define IGNORE_CHANGE_BELOW_USEC 10000
