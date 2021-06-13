@@ -40,11 +40,13 @@ The maths was thus (see also in the code):
 - If letter was worked out to be > ‘H’, add 1 as the wallbox doesn’t have an I
 - The number is the pre-gap-count modulus 10 (i.e. pre-gap-count % 10)
 
+
 Running
 
-Must be run as root                                                 ./pi-seeburg
-You can run with debug:                                             ./pi-seeburg -d
-You can pass the key combo through to an external programme:        ./pi-seeburg -p 'sonos/sonos-wallbox "Dining Room"'
+- Must be run as root:                                                ./pi-seeburg
+- You can run with debug:                                             ./pi-seeburg -d
+- You can pass the key combo through to an external programme:        ./pi-seeburg -p 'sonos/sonos-wallbox "Dining Room"'
+
 
 Pass through to Spotify
 
