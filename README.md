@@ -50,3 +50,7 @@ You can run with debug:
 
 You can pass the key combo through to an external programme:
 ./pi-seeburg -p 'sonos/sonos-wallbox "Dining Room"'
+
+Pass through to Spotify
+
+The key combo will be hand over to ...
