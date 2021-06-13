@@ -42,14 +42,9 @@ The maths was thus (see also in the code):
 
 Running
 
-Must be run as root
-./pi-seeburg
-
-You can run with debug:
-./pi-seeburg -d
-
-You can pass the key combo through to an external programme:
-./pi-seeburg -p 'sonos/sonos-wallbox "Dining Room"'
+Must be run as root                                                 ./pi-seeburg
+You can run with debug:                                             ./pi-seeburg -d
+You can pass the key combo through to an external programme:        ./pi-seeburg -p 'sonos/sonos-wallbox "Dining Room"'
 
 Pass through to Spotify
 
