@@ -6,6 +6,7 @@ Intro
 I was inspired by two projects found in the internet. Thanks to Phil and Scott for publishing their great work.
 https://www.smbaker.com/converting-a-seeburg-3wa-wallbox-into-a-remote-for-a-modern-music-player
 https://phil.lavin.me.uk/2013/11/raspberry-pi-project-a-1960s-wallbox-interfaced-with-sonos/
+
 Based on Phil Levin's Raspberry PI GPIO Interrupt demo code. Interfacing the RasPi with my 1950s Seeburg Wall-O-Matic 100 (3w1) to decode the pulse train into the key combination that was pressed. Later on forward the pulse to a library of music titles and select right one. The wallbox works on 25V AC. A circuit is used from a project published by Scott M. Baker to pass pulses at this voltage to the GPIO pins of the RasPi at the RasPi's required small current (around 2mA) @ 3.3V DC.
 
 Diagram for interfacing is as follows:
@@ -24,7 +25,7 @@ gcc -lwiringPi -o pi-seeburg pi-seeburg.c
 Settings
 
 There are a number of defines at the top of the code. E.g. pin code and timings.
-In my case GPIO5 is pin that the wallbox circuit is connected to as well as the timings the code works to. Timings are differing between wall boxes, because of the motor arm RPM, significantly enough that these need tweaking. I am using a US model in Germany. The 50ht frequency in Germany makres the motor rotation slower than in the US. Originaly it has been built for the 60hz frequency.
+In my case GPIO5 is pin that the wallbox circuit is connected to as well as the timings the code works to. Timings are differing between wall boxes, because of the motor arm RPM, significantly enough that these need tweaking. I am using a US model in Germany. The 50hz frequency in Germany makes the motor rotation slower than in the US. Originaly it has been built for the 60hz frequency. Also depends on the lubrication how fast the motor rotates.
 
 
 The pulse train
@@ -33,7 +34,11 @@ The code analyses and decodes the pulse train. The train comprises of a number o
 
 On this model wall box, the pulse train is sequential to represent A1 through to K0. If X represents the number of pulses before the gap and Y represents the number of pulses after the gap, X increments from 1 to 20 whilst Y stays at 1. Y then increments and X resets back to 1. The cycle repeats through to X=20, Y=4 for K0.
 
-The decoding is simple maths as shown in the code.
+The maths was thus (see also in the code):
+- Decrement both the pre and post gap counts as 0 is represented by 1 pulse
+- The letter is (2 * post-gap-count) + (1 if pre-gap-count is > 10)
+- If letter was worked out to be > ‘H’, add 1 as the wallbox doesn’t have an I
+- The number is the pre-gap-count modulus 10 (i.e. pre-gap-count % 10)
 
 Running
 
