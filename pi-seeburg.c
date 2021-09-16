@@ -1,9 +1,8 @@
 /**
-* Code to to decode the pulses from a 1960s Seeburg Wall-O-Matic 100 into the pressed key combination
+* Code to decode the pulses from a 1950s Seeburg 3w1 Wall-O-Matic 100 into the pressed key combination
 * by Phil Lavin <phil@lavin.me.uk>.
-*
+* Changes marked by change_abac71
 * Released under the BSD license.
-* Changed by Ingo Dassow for project purpose Seeburg_IO // change_Abac71
 *
 */
 
@@ -15,14 +14,14 @@
 #include <wiringPi.h>
 
 // Which GPIO pin we're using
-#define PIN 5	//change_Abac71 from 2 to 5
+#define PIN 21 //change_abac71 from 2 to 21
 
 // How much time a change must be since the last in order to count as a change
-#define IGNORE_CHANGE_BELOW_USEC 10000
+#define IGNORE_CHANGE_BELOW_USEC 50000 //change_abac71 from 10000 to 50000
 // What is the minimum time since the last pulse for a pulse to count as "after the gap"
-#define MIN_GAP_LEN_USEC 300000 // change_Abac71 from 250000 to 300000
+#define MIN_GAP_LEN_USEC 240000 //change_abac71 from 250000 to 240000
 // What is the mimimum time since the last pulse for a pulse to count as a new train
-#define MIN_TRAIN_BOUNDARY_USEC 500000 // change_Abac71 from 400000 to 500000
+#define MIN_TRAIN_BOUNDARY_USEC 1200000 //change_abac71 from 0.5 to 1.2 sec
 // How often to update the last change value to stop diff overflowing
 #define OVERFLOW_PROTECTION_INTERVAL_USEC 60000000 // 60 secs
 
@@ -104,10 +103,20 @@ int main(int argc, char **argv) {
 				}
 
 				// Calc the key combination...
-				letter = 'A' + (2 * post) + (pre > 10); // A plus the offset plus 1 more if pre gap pulses > 10
-				letter += (letter > 'H'); // Hax for missing I
-				number = pre % 10;
-
+//delete_abac71			letter = 'A' + (2 * post) + (pre > 11); // A plus the offset plus 1 more if pre gap pulses > 10
+//delete_abac71			letter += (letter > 'H'); // Hax for missing I
+//delete_abac71			number = pre % 11;
+				if (pre >= 1 && pre <= 10) {		//insert_abac71	
+				number = pre;				//insert_abac71
+				letter = 'A' + (post - 2) * 2;		//insert_abac71	
+				}					//insert_abac71	
+				else if (pre >= 12 && pre <= 21) {	//insert_abac71	
+				number = pre - 11;			//insert_abac71	
+				letter = 'A' + ((post - 1) * 2) + 1;	//insert_abac71	
+				}					//insert_abac71	
+				 
+				// Skipping 'I' for some reason		//insert_abac71	
+				if (letter > 'H') { letter++; }		//insert_abac71
 				// Hand off to the handler
 				handle_key_combo(letter, number);
 			}
@@ -221,3 +230,4 @@ void handle_key_combo(char letter, int number) {
 unsigned long get_diff(struct timeval now, struct timeval last_change) {
 	return (now.tv_sec * 1000000 + now.tv_usec) - (last_change.tv_sec * 1000000 + last_change.tv_usec);
 }
+
