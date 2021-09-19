@@ -1,6 +1,6 @@
 /**
-* Code to decode the pulses from a 1950s Seeburg 3w1 Wall-O-Matic 100 into the pressed key combination
-* by Phil Lavin <phil@lavin.me.uk>.
+* Code to decode the pulses from a 1950s Seeburg 3w1 Wall-O-Matic 100 into the pressed key combination, transfer of combo to VLC player
+* Original code by Phil Lavin <phil@lavin.me.uk>.
 * Changes marked by change_abac71
 * Released under the BSD license.
 *
@@ -12,14 +12,15 @@
 #include <sys/time.h>
 #include <string.h>
 #include <wiringPi.h>
+#include <vlc/vlc.h>
 
 // Which GPIO pin we're using
 #define PIN 21 //change_abac71 from 2 to 21
 
 // How much time a change must be since the last in order to count as a change
-#define IGNORE_CHANGE_BELOW_USEC 50000 //change_abac71 from 10000 to 50000
+#define IGNORE_CHANGE_BELOW_USEC 50000 //change_abac71 from 0.01 to 0.05 sec
 // What is the minimum time since the last pulse for a pulse to count as "after the gap"
-#define MIN_GAP_LEN_USEC 240000 //change_abac71 from 250000 to 240000
+#define MIN_GAP_LEN_USEC 240000 //change_abac71 from 0.25 to 0.24 sec
 // What is the mimimum time since the last pulse for a pulse to count as a new train
 #define MIN_TRAIN_BOUNDARY_USEC 1200000 //change_abac71 from 0.5 to 1.2 sec
 // How often to update the last change value to stop diff overflowing
@@ -34,6 +35,7 @@ int pre_gap_pulses = 0;
 int post_gap_pulses = 0;
 // Settings
 char *pass_to = NULL;
+
 int debug = 0;
 // Locked?
 int lock = 0;
@@ -102,21 +104,23 @@ int main(int argc, char **argv) {
 					printf("Before calc. Pre: %d Post: %d\n", pre, post);
 				}
 
-				// Calc the key combination...
+				// Calc the key combination... (for a 3W100 pulse train max_pre = 20 and max_post = 4)
 //delete_abac71			letter = 'A' + (2 * post) + (pre > 11); // A plus the offset plus 1 more if pre gap pulses > 10
 //delete_abac71			letter += (letter > 'H'); // Hax for missing I
 //delete_abac71			number = pre % 11;
-				if (pre >= 1 && pre <= 10) {		//insert_abac71	
-				number = pre;				//insert_abac71
-				letter = 'A' + (post - 2) * 2;		//insert_abac71	
-				}					//insert_abac71	
-				else if (pre >= 12 && pre <= 21) {	//insert_abac71	
-				number = pre - 11;			//insert_abac71	
-				letter = 'A' + ((post - 1) * 2) + 1;	//insert_abac71	
-				}					//insert_abac71	
+
+				// Calc the key combination... (for a 3w1 pulse train max_pre = 21 and max_post = 5)
+				if (pre >= 1 && pre <= 10) {							//insert_abac71	
+				number = pre;									//insert_abac71
+				letter = 'A' + (post - 2) * 2;							//insert_abac71	
+				}										//insert_abac71	
+				else if (pre >= 12 && pre <= 21) {						//insert_abac71	
+				number = pre - 11;								//insert_abac71	
+				letter = 'A' + ((post - 1) * 2) + 1;						//insert_abac71	
+				}										//insert_abac71	
 				 
-				// Skipping 'I' for some reason		//insert_abac71	
-				if (letter > 'H') { letter++; }		//insert_abac71
+				// Skipping 'I' for some reason							//insert_abac71	
+				if (letter > 'H') { letter++; }							//insert_abac71
 				// Hand off to the handler
 				handle_key_combo(letter, number);
 			}
@@ -206,28 +210,16 @@ void handle_key_combo(char letter, int number) {
 
 	printf("Combo: %c%d\n", letter, number);
 
-	if (pass_to) {
-		// Make a string representation of our key combo
-		sprintf(combo, "%c%d", letter, number);
+// Concernate directory and name of sound file and populate shell command
+	sprintf(combo, "%c%d", letter, number);
+	char cvlc_cmd[100];										//insert_abac71
+	strcpy(cvlc_cmd, "cvlc /var/lib/mpd/music/");							//insert_abac71
+	strcat(cvlc_cmd, combo);									//insert_abac71
+	system(cvlc_cmd);										//insert_abac71
 
-		// Concat the supplied command and the key combo
-		sys_cmd = strdup(pass_to);
-		sys_cmd = realloc(sys_cmd, strlen(sys_cmd) + sizeof(combo)); // Cause we lose a \0 we don't need to add 1 for the space
-		strcat(sys_cmd, " \0");
-		strcat(sys_cmd, combo);
-
-		// Run the command. Return 0 is good.
-		if (!system(sys_cmd)) {
-			printf("Passed key combo through to the specified programme\n");
-		}
-
-		// Can has memory?
-		free(sys_cmd);
-	}
 }
 
 // Returns the time difference, in usec, between two provided struct timevals
 unsigned long get_diff(struct timeval now, struct timeval last_change) {
 	return (now.tv_sec * 1000000 + now.tv_usec) - (last_change.tv_sec * 1000000 + last_change.tv_usec);
 }
-
