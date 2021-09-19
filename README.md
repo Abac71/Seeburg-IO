@@ -45,12 +45,12 @@ The first group of pulses has 1-10, 12-21 pulses. The second group has 1-5 pulse
     (Note: The letter 'I' is skipped.)
 
 
+Pass through to VLC player
+
+I used a quite easy way to concernate the file directory and the combo calculated to start the corresponding music file from the raspberry directly.
+
+
 Running
 
 - Must be run as root:                                                ./pi-seeburg
 - You can run with debug:                                             ./pi-seeburg -d
-
-
-Pass through to VLC player
-
-I used a quite easy way to concernate the file directory and the combo calculated to start the *.mp3 directly from the raspberry. 
