@@ -5,7 +5,9 @@ Intro
 
 I was inspired by three projects found in the internet. Thanks to Scott, Phil, and Derek for publishing their great work.
 https://www.smbaker.com/converting-a-seeburg-3wa-wallbox-into-a-remote-for-a-modern-music-player
+
 https://phil.lavin.me.uk/2013/11/raspberry-pi-project-a-1960s-wallbox-interfaced-with-sonos/
+
 https://hecgeek.blogspot.com/2017/10/wall-o-matic-interface-1.html
 
 Based on Phil Lavin's Raspberry PI GPIO Interrupt demo code. Interfacing the RasPi with my 1950s Seeburg Wall-O-Matic 100 (3w1) to decode the pulse train into the key combination that was pressed. Later on forward the pulse to a library of music titles, select right one, and play with VLC player. The wallbox works on 25V AC. A circuit is used from a project published by Scott M. Baker to pass pulses at this voltage to the GPIO pins of the RasPi at the RasPi's required small current (around 2mA) @ 3.3V DC.
