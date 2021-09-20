@@ -213,7 +213,7 @@ void handle_key_combo(char letter, int number) {
 // Concernate directory and name of sound file and populate shell command
 	sprintf(combo, "%c%d", letter, number);
 	char cvlc_cmd[100];										//insert_abac71
-	strcpy(cvlc_cmd, "cvlc /var/lib/mpd/music/");							//insert_abac71
+	strcpy(cvlc_cmd, "cvlc /home/pi/Music/");							//insert_abac71
 	strcat(cvlc_cmd, combo);									//insert_abac71
 	system(cvlc_cmd);										//insert_abac71
 
