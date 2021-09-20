@@ -18,6 +18,7 @@ Diagram for interfacing PiHat is as follows:
 ![image](https://user-images.githubusercontent.com/85778633/121767230-50048980-cb57-11eb-9314-8462704bcdc8.png)
 SMBaker Seeburg circuit
 
+![image](https://user-images.githubusercontent.com/85778633/133966388-b3921bbc-9de0-4360-9e74-1f9b1a4c414d.png)
 
 Clone the repository and Compiling
 
