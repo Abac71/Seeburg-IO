@@ -12,7 +12,6 @@
 #include <sys/time.h>
 #include <string.h>
 #include <wiringPi.h>
-#include <vlc/vlc.h>
 
 // Which GPIO pin we're using
 #define PIN 21 //change_abac71 from 2 to 21
