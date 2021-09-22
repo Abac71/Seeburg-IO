@@ -54,7 +54,7 @@ Pass through to VLC player
 I used a quite easy way to concernate the file directory and the combo calculated to start the corresponding music file from the raspberry directly.
 Using following command is selecting files and queues into a playlist:
 
-cvlc --one-instance --playlist-enqueue --play-and-exit /home/pi/Music/<combo> &
+cvlc --one-instance --playlist-enqueue --play-and-exit /home/pi/Music/{combo} &
 
 
 Music database
