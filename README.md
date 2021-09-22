@@ -49,7 +49,12 @@ The first group of pulses has 1-10, 12-21 pulses. The second group has 1-5 pulse
 Pass through to VLC player
 
 I used a quite easy way to concernate the file directory and the combo calculated to start the corresponding music file from the raspberry directly.
+Using following command is selecting files and queues into a playlist:
+cvlc --one-instance --playlist-enqueue --play-and-exit /home/pi/Music/<combo> &
 
+Music database
+
+Music files should be stored in "/home/pi/music". Each music file should be named like combo (e.g. A1, A2, etc.)
 
 Running
 
