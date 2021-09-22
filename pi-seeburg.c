@@ -17,13 +17,13 @@
 #define PIN 21 //change_abac71 from 2 to 21
 
 // How much time a change must be since the last in order to count as a change
-#define IGNORE_CHANGE_BELOW_USEC 50000 //change_abac71 from 0.01 to 0.05 sec
+#define IGNORE_CHANGE_BELOW_USEC 50000 									//change_abac71 from 0.01 to 0.05 sec
 // What is the minimum time since the last pulse for a pulse to count as "after the gap"
-#define MIN_GAP_LEN_USEC 240000 //change_abac71 from 0.25 to 0.24 sec
+#define MIN_GAP_LEN_USEC 240000 									//change_abac71 from 0.25 to 0.24 sec
 // What is the mimimum time since the last pulse for a pulse to count as a new train
-#define MIN_TRAIN_BOUNDARY_USEC 1200000 //change_abac71 from 0.5 to 1.2 sec
+#define MIN_TRAIN_BOUNDARY_USEC 1200000 								//change_abac71 from 0.5 to 1.2 sec
 // How often to update the last change value to stop diff overflowing
-#define OVERFLOW_PROTECTION_INTERVAL_USEC 60000000 // 60 secs
+#define OVERFLOW_PROTECTION_INTERVAL_USEC 60000000 							// 60 secs
 
 // Time of last change
 struct timeval last_change;
@@ -212,8 +212,9 @@ void handle_key_combo(char letter, int number) {
 // Concernate directory and name of sound file and populate shell command
 	sprintf(combo, "%c%d", letter, number);
 	char cvlc_cmd[100];										//insert_abac71
-	strcpy(cvlc_cmd, "cvlc /home/pi/Music/");							//insert_abac71
+	strcpy(cvlc_cmd, "cvlc --one-instance --playlist-enqueue --play-and-exit /home/pi/Music/");	//insert_abac71
 	strcat(cvlc_cmd, combo);									//insert_abac71
+	strcat(cvlc_cmd, " &");										//insert_abac71
 	system(cvlc_cmd);										//insert_abac71
 
 }
