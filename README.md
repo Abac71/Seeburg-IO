@@ -25,7 +25,9 @@ SMBaker Seeburg circuit
 Clone the repository and Compiling
 
 The circuit is using WiringPi. In case it is nit installed follow the instructions at http://wiringpi.com/download-and-install/ to install the WiringPi library on your Pi (also published by Phil Lavin).
-Use following command to clone the repository: git clone 
+
+Use following command to clone the repository: git clone https://github.com/Abac71/Seeburg-IO.git
+
 Use following command to compile the code to a working program: gcc -lwiringPi -o pi-seeburg pi-seeburg.c
 
 
@@ -37,9 +39,7 @@ In my case GPIO21 (wiringPi definition) is pin that the wallbox circuit is conne
 
 Transferring and decoding the pulse train
 
-The code analyses and decodes the pulse train. The train comprises of a number of pulses, a noticable time gap and a number of additional pulses. The original code from Phil is set up to ignore electrical jitter and pulses unrelated to the train (e.g. when a coin is inserted). As the circuit of SMBaker is much cleaner these sections of the code can be removed because the electrical jitter is filtered by the hardware.
-
-For the combo calculation some code from Derek was helpful as he also used a 3w1 instead a 3w100 (like Phil did).
+The code analyses and decodes the pulse train. The train comprises of a number of pulses, a noticable time gap and a number of additional pulses. The original code from Phil is set up to ignore electrical jitter and pulses unrelated to the train (e.g. when a coin is inserted). As the circuit of SMBaker is much cleaner these sections of the code can be removed because the electrical jitter is filtered by the hardware. For the combo calculation some code from Derek was helpful as he also used a 3w1 instead a 3w100 (like Phil did).
 
 The first group of pulses has 1-10, 12-21 pulses. The second group has 1-5 pulses. Mapping this information to the selection buttons of the 3w1, ends up into the following sequence:
     A1 ( 1, 1), A2 ( 2, 1), ..., A10 (10, 1)
