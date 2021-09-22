@@ -64,5 +64,5 @@ Music files should be stored in "/home/pi/music". Each music file should be name
 
 Running
 
-- Must be run as root:                                                ./pi-seeburg
-- You can run with debug:                                             ./pi-seeburg -d
+- As VLC cannot be run under root use automatic log-on with pi and populate ./pi-seeburg using /etc/profile. Configure automatic log-on with sudo raspi-config.
+- You can also run in debug mode: ./pi-seeburg -d
