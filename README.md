@@ -13,6 +13,8 @@ https://hecgeek.blogspot.com/2017/10/wall-o-matic-interface-1.html
 I am interfacing the RasPi with my 1950s Seeburg Wall-O-Matic 100 (3w1) using a small board layout for a Pi hat found at Scott's blog. Based on Phil Lavin's Raspberry PI GPIO Interrupt demo code the pulse train gets transferred into the key combination that was pressed. Later on forward the combo to a library of music titles, select right one, and play with VLC player.
 The wallbox works on 25VAC. The circuit used (published by Scott M. Baker) to pass pulses at this voltage to the GPIO pins of the required small current (around 2mA) @ 3.3V DC.
 
+![image](https://user-images.githubusercontent.com/85778633/134880764-8301e8b3-980d-4eb3-806d-dec3f7e8aa02.png)
+
 
 Diagram for interfacing PiHat is as follows:
 
