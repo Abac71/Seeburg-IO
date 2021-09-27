@@ -17,13 +17,13 @@
 #define PIN 21 //change_abac71 from 2 to 21
 
 // How much time a change must be since the last in order to count as a change
-#define IGNORE_CHANGE_BELOW_USEC 50000 									//change_abac71 from 0.01 to 0.05 sec
+#define IGNORE_CHANGE_BELOW_USEC 55000 //change_abac71 from 0.01 to 0.055 sec
 // What is the minimum time since the last pulse for a pulse to count as "after the gap"
-#define MIN_GAP_LEN_USEC 240000 									//change_abac71 from 0.25 to 0.24 sec
+#define MIN_GAP_LEN_USEC 240000 //change_abac71 from 0.25 to 0.24 sec
 // What is the mimimum time since the last pulse for a pulse to count as a new train
-#define MIN_TRAIN_BOUNDARY_USEC 1200000 								//change_abac71 from 0.5 to 1.2 sec
+#define MIN_TRAIN_BOUNDARY_USEC 1200000 //change_abac71 from 0.5 to 1.2 sec
 // How often to update the last change value to stop diff overflowing
-#define OVERFLOW_PROTECTION_INTERVAL_USEC 60000000 							// 60 secs
+#define OVERFLOW_PROTECTION_INTERVAL_USEC 60000000 // 60 secs
 
 // Time of last change
 struct timeval last_change;
@@ -91,7 +91,12 @@ int main(int argc, char **argv) {
 			if (!pre_gap && pre_gap_pulses && post_gap_pulses) {
 				// 0 base the counts without changing the originals
 				pre = pre_gap_pulses - 1;
-				post = post_gap_pulses - 1;
+				if (pre >= 1 && pre <= 11) {							//insert_abac71	
+				post = post_gap_pulses - 2;							//insert_abac71	
+				}										//insert_abac71	
+				else if (pre >= 12 && pre <= 21) {						//insert_abac71	
+				post = post_gap_pulses - 1;							//insert_abac71	
+				}
 
 				if (debug)
 					printf("Locking\n");
@@ -110,16 +115,15 @@ int main(int argc, char **argv) {
 
 				// Calc the key combination... (for a 3w1 pulse train max_pre = 21 and max_post = 5)
 				if (pre >= 1 && pre <= 10) {							//insert_abac71	
-				number = pre;									//insert_abac71
-				letter = 'A' + (post - 2) * 2;							//insert_abac71	
-				}										//insert_abac71	
+					number = pre;								//insert_abac71	
+					letter = 'A' + (post - 1) * 2;						//insert_abac71	
+					}									//insert_abac71	
 				else if (pre >= 12 && pre <= 21) {						//insert_abac71	
-				number = pre - 11;								//insert_abac71	
-				letter = 'A' + ((post - 1) * 2) + 1;						//insert_abac71	
-				}										//insert_abac71	
+					number = pre - 11;							//insert_abac71	
+					letter = 'A' + ((post - 1) * 2) + 1;					//insert_abac71	
+					}									//insert_abac71	
+				if (letter > 'H') { letter++; }							//insert_abac71				
 				 
-				// Skipping 'I' for some reason							//insert_abac71	
-				if (letter > 'H') { letter++; }							//insert_abac71
 				// Hand off to the handler
 				handle_key_combo(letter, number);
 			}
@@ -211,11 +215,11 @@ void handle_key_combo(char letter, int number) {
 
 // Concernate directory and name of sound file and populate shell command
 	sprintf(combo, "%c%d", letter, number);
-	char cvlc_cmd[100];										//insert_abac71
-	strcpy(cvlc_cmd, "cvlc --one-instance --playlist-enqueue --play-and-exit /home/pi/Music/");	//insert_abac71
-	strcat(cvlc_cmd, combo);									//insert_abac71
-	strcat(cvlc_cmd, " &");										//insert_abac71
-	system(cvlc_cmd);										//insert_abac71
+	char cvlc_cmd[100];																						//insert_abac71
+	strcpy(cvlc_cmd, "cvlc --one-instance --playlist-enqueue --play-and-exit /home/pi/Music/");			//insert_abac71
+	strcat(cvlc_cmd, combo);																				//insert_abac71
+	strcat(cvlc_cmd, " &");																					//insert_abac71
+	system(cvlc_cmd);																						//insert_abac71
 
 }
 
