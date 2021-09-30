@@ -61,7 +61,8 @@ cvlc --one-instance --playlist-enqueue --play-and-exit /home/pi/Music/{combo} &
 
 Music database
 
-Music files should be stored in "/home/pi/music". Each music file should be named like combo (e.g. A1, A2, etc.)
+Music files should be stored in "/home/pi/music". Each music file should be named like combo (e.g. A1, A2, etc.). Just add the directory to a SAMBA server installed on the Raspi so you can easily change the track records. 
+![image](https://user-images.githubusercontent.com/85778633/135421903-fba164da-939d-4be4-85f9-c14d69750d88.png)
 
 
 Running
