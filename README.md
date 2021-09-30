@@ -68,3 +68,8 @@ Running
 
 - As VLC cannot be run under root use automatic log-on with pi and populate ./pi-seeburg using /etc/profile. Configure automatic log-on with sudo raspi-config.
 - You can also run in debug mode: ./pi-seeburg -d
+
+
+Title strips
+
+For the track cards I have used an Excel sheet. Just fill in your track records, print, and cut out. A register for your tracks at once.
