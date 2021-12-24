@@ -37,3 +37,5 @@
 	sudo service smbd restart
 	sudo service nmbd restart
 	sudo smbpasswd -a pi
+8. Populate ./pi-seeburg using /etc/profile.
+9. Configure automatic log-on with sudo raspi-config
