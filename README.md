@@ -1,7 +1,7 @@
 # Seeburg-IO
 First relase: Interfacing Rasberry PI (version 3b+) to a Seeburg 3w1 (German Hecker style with extra cash box for housing Raspi, transformer, etc.)
 
-Second release: Interfacing Rsapberry PI Zero 2 W to a Seeburg 3w1 (US style)
+Second release: Interfacing Raspberry PI Zero 2 W to a Seeburg 3w1 (US style)
 
 Intro
 
