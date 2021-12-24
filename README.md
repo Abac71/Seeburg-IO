@@ -30,7 +30,7 @@ The circuit is using WiringPi. In case it is not installed follow the instructio
 
 Use following command to clone the repository: git clone https://github.com/Abac71/Seeburg-IO.git
 
-Use following command to compile the code to a working program: gcc -lwiringPi -o pi-seeburg pi-seeburg.c
+Use following command to compile the code to a working program: gcc pi-seeburg.c -lwiringPi -o pi-seeburg
 
 
 Settings
