@@ -1,5 +1,6 @@
 # Seeburg-IO
 First relase: Interfacing Rasberry PI (version 3b+) to a Seeburg 3w1 (German Hecker style with extra cash box for housing Raspi, transformer, etc.)
+
 Second release: Interfacing Rsapberry PI Zero 2 W to a Seeburg 3w1 (US style)
 
 Intro
@@ -24,6 +25,7 @@ SMBaker Seeburg circuit
 
 ![image](https://user-images.githubusercontent.com/85778633/133966388-b3921bbc-9de0-4360-9e74-1f9b1a4c414d.png)
 First release: German hecker model housing hardware in cashbox
+
 Second release: US model housing hardware components under regular chrome cover
 
 
