@@ -1,17 +1,18 @@
-1. Raspberry PI OS
-2. SSH einrichten in raspberry configuration
-3. XRDP installieren	
+1. Installing Raspberry PI OS
+2. Enable SSH in raspberry configuration
+3. XRDP install
+	sudo apt-get install xrdp
+	sudo systemctl status xrdp
 4. git clone https://github.com/Abac71/Seeburg-IO.git
-5. wiringPi installieren
+5. wiringPi install (for Raspberry Pi Zero 2 W)
 	http://wiringpi.com/download-and-install/
 	http://wiringpi.com/wiringpi-updated-to-2-52-for-the-raspberry-pi-4b/
 	cd /tmp
 	wget https://project-downloads.drogon.net/wiringpi-latest.deb
 	sudo dpkg -i wiringpi-latest.deb
 	gpio -v
-6. Linker Optionen anpassen
-7. Programmcode compilieren: gcc pi-seeburg.c -lwiringPi -o pi-seeburg
-8. Samba einrichten
+6. Program code compile: gcc pi-seeburg.c -lwiringPi -o pi-seeburg
+7. Samba install
 	sudo apt-get update
 	sudo apt-get install samba samba-common smbclient
 	sudo mv /etc/samba/smb.conf /etc/samba/smb.conf_alt
@@ -36,4 +37,3 @@
 	sudo service smbd restart
 	sudo service nmbd restart
 	sudo smbpasswd -a pi
-9. Muskidateien und Track Record Liste kopieren
