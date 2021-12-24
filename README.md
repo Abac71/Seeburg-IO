@@ -1,5 +1,5 @@
 # Seeburg-IO
-Interfacing Rasberry PI to a Seeburg 3w1
+Interfacing Rasberry PI (version 3b+) to a Seeburg 3w1
 
 Intro
 
@@ -26,7 +26,7 @@ SMBaker Seeburg circuit
 
 Clone the repository and Compiling
 
-The circuit is using WiringPi. In case it is nit installed follow the instructions at http://wiringpi.com/download-and-install/ to install the WiringPi library on your Pi (also published by Phil Lavin).
+The circuit is using WiringPi. In case it is not installed follow the instructions at http://wiringpi.com/download-and-install/ to install the WiringPi library on your Pi (also published by Phil Lavin).
 
 Use following command to clone the repository: git clone https://github.com/Abac71/Seeburg-IO.git
 
