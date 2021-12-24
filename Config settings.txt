@@ -33,6 +33,10 @@
 		comment = Samba-3w1mp3-Freigabe
 		path = /home/pi/Music
 		read only = no
+8. Blue-Alsa install https://www.raspberry-pi-geek.de/ausgaben/rpg/2018/04/musik-per-bluetooth-an-einen-lautsprecher-senden/
+	sudo apt-get -y install bluealsa
+	sudo systemctl disable bluealsa.service
+	sudo cp /lib/systemd/system/bluealsa.service /etc/systemd/system
 	testparm
 	sudo service smbd restart
 	sudo service nmbd restart
