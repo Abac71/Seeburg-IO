@@ -1,0 +1,39 @@
+1. Raspberry PI OS
+2. SSH einrichten in raspberry configuration
+3. XRDP installieren	
+4. git clone https://github.com/Abac71/Seeburg-IO.git
+5. wiringPi installieren
+	http://wiringpi.com/download-and-install/
+	http://wiringpi.com/wiringpi-updated-to-2-52-for-the-raspberry-pi-4b/
+	cd /tmp
+	wget https://project-downloads.drogon.net/wiringpi-latest.deb
+	sudo dpkg -i wiringpi-latest.deb
+	gpio -v
+6. Linker Optionen anpassen
+7. Programmcode compilieren: gcc pi-seeburg.c -lwiringPi -o pi-seeburg
+8. Samba einrichten
+	sudo apt-get update
+	sudo apt-get install samba samba-common smbclient
+	sudo mv /etc/samba/smb.conf /etc/samba/smb.conf_alt
+	sudo nano /etc/samba/smb.conf
+		[global]
+		workgroup = WORKGROUP
+		security = user
+		encrypt passwords = yes
+		client min protocol = SMB2
+		client max protocol = SMB3
+	testparm
+	sudo service smbd restart
+	sudo service nmbd restart
+	sudo chown pi:pi /home/pi/Music
+	sudo chmod 700 /home/pi/Music
+	sudo nano /etc/samba/smb.conf
+		[Samba3w1mp3]
+		comment = Samba-3w1mp3-Freigabe
+		path = /home/pi/Music
+		read only = no
+	testparm
+	sudo service smbd restart
+	sudo service nmbd restart
+	sudo smbpasswd -a pi
+9. Muskidateien und Track Record Liste kopieren
