@@ -26,7 +26,7 @@ SMBaker Seeburg circuit
 
 Clone the repository and Compiling
 
-The circuit is using WiringPi. In case it is not installed follow the instructions at http://wiringpi.com/download-and-install/ to install the WiringPi library on your Pi (also published by Phil Lavin).
+The circuit is using WiringPi. In case it is not installed follow the instructions at http://wiringpi.com/download-and-install/ to install the WiringPi library on your Pi ( published by Gordon Henderson). For projects to be realized under Pi4 please see the version update information for release 2.52.
 
 Use following command to clone the repository: git clone https://github.com/Abac71/Seeburg-IO.git
 
