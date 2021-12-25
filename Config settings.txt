@@ -33,6 +33,10 @@
 		comment = Samba-3w1mp3-Freigabe
 		path = /home/pi/Music
 		read only = no
+	testparm
+	sudo service smbd restart
+	sudo service nmbd restart
+	sudo smbpasswd -a pi
 8. https://raspberrypi.stackexchange.com/questions/90267/how-to-stream-sound-to-a-bluetooth-device-from-a-raspberry-pi-zero
 9. Populate ./pi-seeburg using /etc/profile.
 10. Configure automatic log-on with sudo raspi-config
