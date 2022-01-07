@@ -16,21 +16,18 @@ I am interfacing the RasPi with my 1950s Seeburg Wall-O-Matic 100 (3w1) using a 
 The wallbox works on 25VAC. The circuit used (published by Scott M. Baker) to pass pulses at this voltage to the GPIO pins of the required small current (around 2mA) @ 3.3V DC.
 
 ![image](https://user-images.githubusercontent.com/85778633/134880764-8301e8b3-980d-4eb3-806d-dec3f7e8aa02.png)
-
-
-Diagram for interfacing PiHat is as follows:
+Picture 1: First release realised with German hecker model housing hardware in cashbox
 
 ![image](https://user-images.githubusercontent.com/85778633/121767230-50048980-cb57-11eb-9314-8462704bcdc8.png)
-SMBaker Seeburg circuit
+Picture 2: SMBaker Seeburg circuit
 
 ![image](https://user-images.githubusercontent.com/85778633/133966388-b3921bbc-9de0-4360-9e74-1f9b1a4c414d.png)
-First release: German hecker model housing hardware in cashbox
-
-Second release: Housing additional hardware components inside regular US models is nearly not poosible (limited space). Therefore components are housed in an external enclosure.  
+Picture 3: PiHat for pulse transfer based on SMBaker circuit
 
 ![image](https://user-images.githubusercontent.com/85778633/148529008-e1d82f8e-6271-42d5-8490-8c35454bd0fb.png)
+Picture 4: Second release for regular US models realized in an external enclosre (limited space inside chrome cover).
 
-Clone the repository and Compiling
+Code implementation: Clone the repository and Compiling
 
 The circuit is using WiringPi. In case it is not installed follow the instructions at http://wiringpi.com/download-and-install/ to install the WiringPi library on your Pi ( published by Gordon Henderson). For projects to be realized under Pi4 please see the version update information for release 2.52.
 
@@ -69,6 +66,7 @@ Music database
 
 Music files should be stored in "/home/pi/music". Each music file should be named like combo (e.g. A1, A2, etc.). Just add the directory to a SAMBA server installed on the Raspi so you can easily change the track records. 
 ![image](https://user-images.githubusercontent.com/85778633/135421903-fba164da-939d-4be4-85f9-c14d69750d88.png)
+Picture 5: Format of music files
 
 
 Running
