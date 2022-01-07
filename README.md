@@ -26,8 +26,9 @@ SMBaker Seeburg circuit
 ![image](https://user-images.githubusercontent.com/85778633/133966388-b3921bbc-9de0-4360-9e74-1f9b1a4c414d.png)
 First release: German hecker model housing hardware in cashbox
 
-Second release: US model housing hardware components under regular chrome cover
+Second release: Housing additional hardware components inside regular US models is nearly not poosible (limited space). Therefore components are housed in an external enclosure.  
 
+![image](https://user-images.githubusercontent.com/85778633/148529008-e1d82f8e-6271-42d5-8490-8c35454bd0fb.png)
 
 Clone the repository and Compiling
 
