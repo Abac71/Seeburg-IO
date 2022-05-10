@@ -1,6 +1,7 @@
 # Seeburg-IO
-First release: Interfacing Rasberry PI (version 3b+) to a Seeburg 3w1 (German Hecker style with extra cash box for housing of Raspi, transformer, etc.)
-Second release: Interfacing Raspberry PI Zero 2 W / Waveshare Soundcard Hat to a Seeburg 3w1 (US style)
+1st release: Interfacing Rasberry PI (version 3b+) to a Seeburg 3w1 (German Hecker style with extra cash box for housing of Raspi, transformer, etc.);
+2nd release: Interfacing Raspberry PI Zero 2 W / Waveshare Soundcard Hat to a Seeburg 3w1/3w100/SC1 (Housing in external encloser, kind of Jukebox simulator);
+3rd release: Interfacing Raspberry PI 1.3 / Waveshare Soundcard Hat to a Seeburg Consolette SC1 (Housing inside instead of album pricing unit);
 
 Intro
 
