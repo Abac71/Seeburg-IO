@@ -27,7 +27,7 @@ Picture 2: PiHat for pulse transfer based on SMBaker circuit
 ![image](https://user-images.githubusercontent.com/85778633/134880764-8301e8b3-980d-4eb3-806d-dec3f7e8aa02.png)
 Picture 3: First release realised with German hecker model housing hardware in cashbox
 
-![image](https://user-images.githubusercontent.com/85778633/148529008-e1d82f8e-6271-42d5-8490-8c35454bd0fb.png)
+![image](https://user-images.githubusercontent.com/85778633/167696003-96375f7f-cf34-48cc-ba73-6013a8ca466f.png)
 Picture 4: Second release for regular realized in an external encloser for interfacing different Seeburg wallbox types and external speakers (Jukebox simulator).
 
 ![image](https://user-images.githubusercontent.com/85778633/167694972-67a7183d-8b2f-4940-9409-1278d4f649fe.png)
