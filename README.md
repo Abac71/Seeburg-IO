@@ -28,10 +28,10 @@ Picture 2: PiHat for pulse transfer based on SMBaker circuit
 Picture 3: First release realised with German hecker model housing hardware in cashbox
 
 ![image](https://user-images.githubusercontent.com/85778633/167696003-96375f7f-cf34-48cc-ba73-6013a8ca466f.png)
-Picture 4: Second release for regular realized in an external encloser for interfacing different Seeburg wallbox types and external speakers (Jukebox simulator).
+Picture 4: Second release realized in an external encloser for interfacing different Seeburg wallbox types and external speakers (Jukebox simulator).
 
 ![image](https://user-images.githubusercontent.com/85778633/167696490-ed3a80ea-5647-4ccc-8ff1-96f35bcd1bf2.png)
-Picture 5: Third release for Seeburg Consolette SC1 using space inside the wallbox where pricing unit is placed.
+Picture 5: Third release for a Seeburg Consolette SC1 using space inside the wallbox where typically the album pricing unit is placed.
 
 Code implementation: Clone the repository and Compiling
 
@@ -39,7 +39,7 @@ The circuit is using WiringPi. In case it is not installed follow the instructio
 
 Use following command to clone the repository: git clone https://github.com/Abac71/Seeburg-IO.git
 
-Use following command to compile the code to a working program: gcc pi-seeburg.c -lwiringPi -o pi-seeburg
+Use following command to compile the code to a working program: gcc pi-seeburg.c -lwiringPi -o pi-seeburg (for 3w1/3w100) or gcc pisc1.c -lwiringPi -o pi-seeburg (for Consolette SC1)
 
 
 Settings
@@ -52,13 +52,20 @@ Transferring and decoding the pulse train
 
 The code analyses and decodes the pulse train. The train comprises of a number of pulses, a noticable time gap and a number of additional pulses. The original code from Phil is set up to ignore electrical jitter and pulses unrelated to the train (e.g. when a coin is inserted). As the circuit of SMBaker is much cleaner these sections of the code can be removed because the electrical jitter is filtered by the hardware. For the combo calculation some code from Derek was helpful as he also used a 3w1 instead a 3w100 (like Phil did).
 
-The first group of pulses has 1-10, 12-21 pulses. The second group has 1-5 pulses. Mapping this information to the selection buttons of the 3w1, ends up into the following sequence:
+For a 3w1/3w100 the first group of pulses has 1-10, 12-21 pulses. The second group has 1-5 pulses. Mapping this information to the selection buttons of the 3w1/3w100, ends up into the following sequence:    
     A1 ( 1, 1), A2 ( 2, 1), ..., A10 (10, 1)
     B1 (12, 1), B2 (13, 1), ..., B10 (21, 1)
     C1 ( 1, 2), C2 ( 2, 2), ..., C10 (10, 2)
     D1 (12, 2), D2 (13, 2), ..., D10 (21, 2)
+    ...
     (Note: The letter 'I' is skipped.)
-
+For a Consolette SC1 the first group of pulses has 1-8 pulses. The second group has 1-20 pulses. Mapping this information to the selection buttons of the Consolette, ends up into the following sequence:
+    A1 ( 8,20), A2 ( 7,20), ..., A8 ( 1,20)
+    B1 ( 8,19), B2 ( 7,19), ..., B8 ( 1,19)
+    ...
+    V1 ( 8, 1), V2 ( 7, 1), ..., V8 ( 1, 1)
+    (Note: The lettera 'I' and 'O' are skipped.)
+    
 
 Pass through to VLC player
 
@@ -70,9 +77,9 @@ cvlc --one-instance --playlist-enqueue --play-and-exit /home/pi/Music/{combo} &
 
 Music database
 
-Music files should be stored in "/home/pi/music". Each music file should be named like combo (e.g. A1, A2, etc.). Just add the directory to a SAMBA server installed on the Raspi so you can easily change the track records. 
+Music files should be stored in "/home/pi/music". Each music file should be named like combo (e.g. A1, A2, etc.). Just add the directory to a SAMBA server installed on the Raspi so you can easily change the track records. SAMBA server will not work with the PI Zero V1.3 as no WLAN/LAN connection can be established.
 ![image](https://user-images.githubusercontent.com/85778633/135421903-fba164da-939d-4be4-85f9-c14d69750d88.png)
-Picture 5: Format of music files
+Picture 6: Format of music files
 
 
 Running
@@ -83,4 +90,4 @@ Running
 
 Title strips
 
-For the track cards I have used an Excel sheet. Just fill in your track records, print, and cut out. A register for your tracks at once.
+For the track cards I have used an Excel sheet. Just fill in your track records, print, and cut out. A register for your tracks at once. The attached file is for the 3w1/3w100. Please transpose for the Consolette and the 160 possible selection.
