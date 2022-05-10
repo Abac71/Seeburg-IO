@@ -30,7 +30,7 @@ Picture 3: First release realised with German hecker model housing hardware in c
 ![image](https://user-images.githubusercontent.com/85778633/167696003-96375f7f-cf34-48cc-ba73-6013a8ca466f.png)
 Picture 4: Second release for regular realized in an external encloser for interfacing different Seeburg wallbox types and external speakers (Jukebox simulator).
 
-![image](https://user-images.githubusercontent.com/85778633/167694972-67a7183d-8b2f-4940-9409-1278d4f649fe.png)
+![image](https://user-images.githubusercontent.com/85778633/167696490-ed3a80ea-5647-4ccc-8ff1-96f35bcd1bf2.png)
 Picture 5: Third release for Seeburg Consolette SC1 using space inside the wallbox where pricing unit is placed.
 
 Code implementation: Clone the repository and Compiling
