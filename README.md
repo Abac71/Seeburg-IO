@@ -18,17 +18,20 @@ https://hecgeek.blogspot.com/2017/10/wall-o-matic-interface-1.html
 I am interfacing the RasPi with different Seeburg wallboxes using a small board layout for a Pi hat found at Scott's blog. Based on Phil Lavin's Raspberry PI GPIO Interrupt demo code the pulse train gets transferred into the key combination that was pressed. Later on forward the combo to a library of music titles, select right one, and play with VLC player.
 The Seeburg wallboxes are working on 25VAC. The circuit used (published by Scott M. Baker) to pass pulses at this voltage to the GPIO pins of the required small current (around 2mA) @ 3.3V DC.
 
-![image](https://user-images.githubusercontent.com/85778633/134880764-8301e8b3-980d-4eb3-806d-dec3f7e8aa02.png)
-Picture 1: First release realised with German hecker model housing hardware in cashbox
-
 ![image](https://user-images.githubusercontent.com/85778633/121767230-50048980-cb57-11eb-9314-8462704bcdc8.png)
-Picture 2: SMBaker Seeburg circuit
+Picture 1: SMBaker Seeburg circuit
 
 ![image](https://user-images.githubusercontent.com/85778633/133966388-b3921bbc-9de0-4360-9e74-1f9b1a4c414d.png)
-Picture 3: PiHat for pulse transfer based on SMBaker circuit
+Picture 2: PiHat for pulse transfer based on SMBaker circuit
+
+![image](https://user-images.githubusercontent.com/85778633/134880764-8301e8b3-980d-4eb3-806d-dec3f7e8aa02.png)
+Picture 3: First release realised with German hecker model housing hardware in cashbox
 
 ![image](https://user-images.githubusercontent.com/85778633/148529008-e1d82f8e-6271-42d5-8490-8c35454bd0fb.png)
-Picture 4: Second release for regular US models realized in an external enclosre (limited space inside chrome cover).
+Picture 4: Second release for regular realized in an external encloser for interfacing different Seeburg wallbox types and external speakers (Jukebox simulator).
+
+![image](https://user-images.githubusercontent.com/85778633/167694972-67a7183d-8b2f-4940-9409-1278d4f649fe.png)
+Picture 5: Third release for Seeburg Consolette SC1 using space inside the wallbox where pricing unit is placed.
 
 Code implementation: Clone the repository and Compiling
 
