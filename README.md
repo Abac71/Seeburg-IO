@@ -50,7 +50,7 @@ In my case GPIO21 (wiringPi definition) is pin that the wallbox circuit is conne
 
 Transferring and decoding the pulse train
 
-The code analyses and decodes the pulse train. The train comprises of a number of pulses, a noticable time gap and a number of additional pulses. The original code from Phil is set up to ignore electrical jitter and pulses unrelated to the train (e.g. when a coin is inserted). As the circuit of SMBaker is much cleaner these sections of the code can be removed because the electrical jitter is filtered by the hardware. For the combo calculation some code from Derek was helpful as he also used a 3w1 instead a 3w100 (like Phil did).
+The code analyses and decodes the pulse train. The train comprises of a number of pulses, a noticable time gap and a number of additional pulses. The original code from Phil is set up to ignore electrical jitter and pulses unrelated to the train (e.g. when a coin is inserted). As the circuit of SMBaker is much cleaner these sections of the code can be removed because the electrical jitter is filtered by the hardware. For the combo calculation some code from Derek was helpful.
 
 For a 3w1/3w100 the first group of pulses has 1-10, 12-21 pulses. The second group has 1-5 pulses. Mapping this information to the selection buttons of the 3w1/3w100, ends up into the following sequence:    
     A1 ( 1, 1), A2 ( 2, 1), ..., A10 (10, 1)
@@ -64,7 +64,7 @@ For a Consolette SC1 the first group of pulses has 1-8 pulses. The second group 
     B1 ( 8,19), B2 ( 7,19), ..., B8 ( 1,19)
     ...
     V1 ( 8, 1), V2 ( 7, 1), ..., V8 ( 1, 1)
-    (Note: The lettera 'I' and 'O' are skipped.)
+    (Note: The letters 'I' and 'O' are skipped.)
     
 
 Pass through to VLC player
