@@ -1,7 +1,7 @@
 /**
 * Code to decode the pulses from a 1960s Seeburg Consolette SC1 into the pressed key combination, transfer of combo to VLC player
 * Original code by Phil Lavin <phil@lavin.me.uk>.
-* Changes marked by change_abac71
+* Changes marked by change_abac71 or input_abac71
 * Released under the BSD license.
 *
 */
@@ -17,11 +17,15 @@
 #define PIN 21 //change_abac71 from 2 to 21
 
 // How much time a change must be since the last in order to count as a change
-#define IGNORE_CHANGE_BELOW_USEC 55000 //change_abac71 from 0.01 to 0.05 sec
+#define IGNORE_CHANGE_BELOW_USEC 40000 //change_abac71 from 0.01
+// What is the maximum time after the gap to count as a pulse
+#define MAX_END_LEN_USEC 75000  //input_abac71
 // What is the minimum time since the last pulse for a pulse to count as "after the gap"
-#define MIN_GAP_LEN_USEC 250000 //change_abac71 from 0.25 to 0.24 sec
+#define MIN_GAP_LEN_USEC 275000 //change_abac71 from 0.25
+// What is the maximum time since the last pulse to count as a pulse //input-abac71
+#define MAX_GAP_LEN_USEC 375000 //input_abac71
 // What is the mimimum time since the last pulse for a pulse to count as a new train
-#define MIN_TRAIN_BOUNDARY_USEC 1250000 //change_abac71 from 0.5 to 1.25 sec
+#define MIN_TRAIN_BOUNDARY_USEC 1000000 //change_abac71 from 0.5
 // How often to update the last change value to stop diff overflowing
 #define OVERFLOW_PROTECTION_INTERVAL_USEC 60000000 // 60 secs
 
@@ -90,8 +94,8 @@ int main(int argc, char **argv) {
 			// Have we registered a full pulse train (i.e. seen a gap)?
 			if (!pre_gap && pre_gap_pulses && post_gap_pulses) {
 				// 0 base the counts without changing the originals
-				pre = pre_gap_pulses - 2;
-				post = post_gap_pulses - 1;
+				pre = pre_gap_pulses;
+				post = post_gap_pulses;
 				
 				if (debug)
 					printf("Locking\n");
@@ -171,7 +175,7 @@ void handle_gpio_interrupt(void) {
 		diff = get_diff(now, last_change);
 
 		// Filter jitter
-		if (diff > IGNORE_CHANGE_BELOW_USEC) {
+		if (diff > IGNORE_CHANGE_BELOW_USEC && diff < MAX_GAP_LEN_USEC ) {
 			// Should switch to post gap? It's a gap > gap len but less than train boundary. Only when we're doing numbers, though.
 			if (pre_gap && diff > MIN_GAP_LEN_USEC && diff < MIN_TRAIN_BOUNDARY_USEC) {
 				pre_gap = 0;
@@ -182,9 +186,13 @@ void handle_gpio_interrupt(void) {
 				pre_gap_pulses++;
 			}
 			else {
-				post_gap_pulses++;
+				if (diff < MAX_END_LEN_USEC) { 
+					post_gap_pulses++;
+				}
+				else if (diff > MIN_GAP_LEN_USEC) {
+					post_gap_pulses = 1;
+				}
 			}
-
 			if (debug)
 				printf("Pulse! Pre: %d Post: %d Diff: %lu\n", pre_gap_pulses, post_gap_pulses, diff);
 		}
@@ -207,7 +215,7 @@ void handle_key_combo(char letter, int number) {
 // Concernate directory and name of sound file and populate shell command
 	sprintf(combo, "%c%d", letter, number);
 	char cvlc_cmd[100];																						//insert_abac71
-	strcpy(cvlc_cmd, "cvlc --one-instance --playlist-enqueue --play-and-exit /home/pi/Music/");			//insert_abac71
+	strcpy(cvlc_cmd, "cvlc --one-instance --playlist-enqueue --play-and-exit /home/pisc1/Music/Titel_SC1/");			//insert_abac71
 	strcat(cvlc_cmd, combo);																				//insert_abac71
 	strcat(cvlc_cmd, " &");																					//insert_abac71
 	system(cvlc_cmd);																						//insert_abac71
