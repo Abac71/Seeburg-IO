@@ -1,9 +1,9 @@
 # Seeburg-IO
 1st release: Interfacing Rasberry PI (version 3b+) to a Seeburg 3w1 (German Hecker style with extra cash box for housing of Raspi, transformer, etc.)
 
-2nd release: Interfacing Raspberry PI Zero 2 W / Waveshare Soundcard Hat to a Seeburg 3w1/3w100/SC1 (Housing in external encloser, kind of Jukebox simulator)
+2nd release: Interfacing Raspberry PI Zero 2 W / Waveshare Soundcard Hat to a Seeburg 3w1/3w100 (Housing in external encloser, kind of Jukebox simulator)
 
-3rd release: Interfacing Raspberry PI 1.3 / Waveshare Soundcard Hat to a Seeburg Consolette SC1 (Housing inside instead of album pricing unit)
+3rd release: Interfacing Raspberry PI 1.3 / Waveshare Soundcard Hat to a Seeburg Consolette SC1 (Housing inside instead of APU10 - album pricing unit)
 
 
 Intro
@@ -90,4 +90,4 @@ Running
 
 Title strips
 
-For the track cards I have used an Excel sheet. Just fill in your track records, print, and cut out. A register for your tracks at once. The attached file is for the 3w1/3w100. Please transpose for the Consolette and the 160 possible selection.
+For the track cards I have used an Excel sheet. Just fill in your track records, print, and cut out. A register for your tracks at once. One file is for the 3w1/3w100 including 100 selection. The other one for the SC1 - 160 possible selection.
