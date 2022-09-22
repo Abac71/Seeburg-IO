@@ -1,7 +1,7 @@
 # Seeburg-IO
 1st release: Interfacing Rasberry PI (version 3b+) to a Seeburg 3w1 (German Hecker style with extra cash box for housing of Raspi, transformer, etc.)
 
-2nd release: Interfacing Raspberry PI Zero 2 W / Waveshare Soundcard Hat to a Seeburg 3w1/3w100 (Housing in external encloser, kind of Jukebox simulator)
+2nd release: Interfacing Raspberry PI Zero 2 W / Waveshare Soundcard Hat to several Seeburg wallboxes (e.g. 3w1/3w100, 3wA, SC1). Housing in an external encloser -> Jukebox simulator. Switching between different scripts for different pulse trains of the wallboxes is realized. I have used a turn-switch (3 positions) mounted to GPIO16,26,27 for switching between the scripts (back wall of the jukebox simulator). A python script (seeburg-start.py) runs in the background to handle the switch position.  
 
 3rd release: Interfacing Raspberry PI 1.3 / Waveshare Soundcard Hat to a Seeburg Consolette SC1 (Housing inside instead of APU10 - album pricing unit)
 
@@ -59,13 +59,22 @@ For a 3w1/3w100 the first group of pulses has 1-10, 12-21 pulses. The second gro
     D1 (12, 2), D2 (13, 2), ..., D10 (21, 2)
     ...
     (Note: The letter 'I' is skipped.)
+
+For a 3wA-200 the first group of pulses has 1-10 pulses. The second group has 1-20 pulses. Mapping this information to the selection buttons of the 3wA, ends up into the following sequence:
+    A1 ( 1, 1), A2 ( 2, 1), ..., A10 (10, 1)
+    B1 ( 1, 2), B2 ( 2, 2), ..., B10 (10, 2)
+    ...
+    V1 ( 1, 20), V2 ( 2,20), ...,V10 (10,20)
+    (Note: The letters 'I' and 'O' are skipped.)
+
 For a Consolette SC1 the first group of pulses has 1-8 pulses. The second group has 1-20 pulses. Mapping this information to the selection buttons of the Consolette, ends up into the following sequence:
     A1 ( 8,20), A2 ( 7,20), ..., A8 ( 1,20)
     B1 ( 8,19), B2 ( 7,19), ..., B8 ( 1,19)
     ...
     V1 ( 8, 1), V2 ( 7, 1), ..., V8 ( 1, 1)
     (Note: The letters 'I' and 'O' are skipped.)
-    
+
+Because of different pulse trains different scripts have to be started to translate the analog pulse train for the raspi. See the different scripts: pi-3wa, pi-3w1, pi-SC1.
 
 Pass through to VLC player
 
