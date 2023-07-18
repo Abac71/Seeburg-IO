@@ -1,7 +1,7 @@
 # Seeburg-IO
 1st release: Interfacing Rasberry PI (version 3b+) to a Seeburg 3w1 (German Hecker style with extra cash box for housing of Raspi, transformer, etc.)
 
-2nd release: Interfacing Raspberry PI Zero 2 W / Waveshare Soundcard Hat to several Seeburg wallboxes (e.g. 3w1/3w100, 3wA, SC1). Housing in an external encloser -> Jukebox simulator. Switching between different scripts for different pulse trains of the wallboxes is realized. I have used a turn-switch (3 positions) mounted to GPIO16,26,27 for switching between the scripts (back wall of the jukebox simulator). A python script (seeburg-start.py) runs in the background to handle the switch position.  
+2nd release: Interfacing Raspberry PI Zero 2 W / Waveshare Soundcard Hat to several Seeburg wallboxes (3w1/3w100, 3wA, SC1, w6). Housing in an external encloser -> Jukebox simulator. Switching between different scripts for different pulse trains of the wallboxes is realized. I have used a turn-switch (3 positions) mounted to GPIO16,26,27 for switching between the scripts (back wall of the jukebox simulator). A python script (seeburg-start.py) runs in the background to handle the switch position.  
 
 3rd release: Interfacing Raspberry PI 1.3 / Waveshare Soundcard Hat to a Seeburg Consolette SC1 (Housing inside instead of APU10 - album pricing unit)
 
