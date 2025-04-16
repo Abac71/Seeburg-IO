@@ -77,7 +77,9 @@ For a Consolette SC1 the first group of pulses has 1-8 pulses. The second group 
     V1 ( 8, 1), V2 ( 7, 1), ..., V8 ( 1, 1)
     (Note: The letters 'I' and 'O' are skipped.)
 
-Because of different pulse trains different scripts have to be started to translate the analog pulse train for the raspi. See the different scripts: pi-3wa, pi-3w1, pi-SC1.
+For a w6 there is only one pulse group from 1 to 20. This wallbox was designed for the Trashcan playing twenty longplays.
+
+Because of different pulse trains different scripts have to be started to translate the analog pulse train for the raspi. See the different scripts: pi-3wa, pi-3w1, pi-SC1, pi-w6.
 
 Pass through to VLC player
 
