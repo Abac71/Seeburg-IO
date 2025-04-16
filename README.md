@@ -1,7 +1,7 @@
 # Seeburg-IO
 1st release: Interfacing Rasberry PI (version 3b+) to a Seeburg 3w1 (German Hecker style with extra cash box for housing of Raspi, transformer, etc.)
 
-2nd release: Interfacing Raspberry PI Zero 2 W / Waveshare Soundcard Hat to several Seeburg wallboxes (3w1/3w100, 3wA, SC1, w6). Housing in an external encloser -> Jukebox simulator. Switching between different scripts for different pulse trains of the wallboxes is realized. I have used a turn-switch (3 positions) mounted to GPIO16,26,27 for switching between the scripts (back wall of the jukebox simulator). A python script (seeburg-start.py) runs in the background to handle the switch position.  
+2nd release: Interfacing Raspberry PI Zero 2 W / Waveshare Soundcard Hat to several Seeburg wallboxes (3w1/3w100, 3wA, SC1, w6). Housing in an external encloser -> Jukebox simulator. Switching between different scripts for different pulse trains of the wallboxes is realized. I have used a turn-switch (3 positions) mounted to GPIO16,26,27 for switching between the scripts (back wall of the jukebox simulator). A python script (seeburg-start.py) runs in the background to handle the switch position. [16.04.2025] Adding a DEC converter to the Jukebox Simulator. I have bought the converter at Wallboxplayer.com. Thanks to Joop for supporting this.
 
 3rd release: Interfacing Raspberry PI 1.3 / Waveshare Soundcard Hat to a Seeburg Consolette SC1 (Housing inside instead of APU10 - album pricing unit)
 
@@ -30,8 +30,11 @@ Picture 3: First release realised with German hecker model housing hardware in c
 ![image](https://user-images.githubusercontent.com/85778633/192135013-3df9e5b9-0da5-4c59-9a43-cb01941560bb.png)
 Picture 4: Second release realized in an external encloser for interfacing different Seeburg wallbox types and external speakers (Jukebox simulator).
 
+![DEC_Converter_groß](https://github.com/user-attachments/assets/a827a23f-cc44-4e30-84d6-2f27d7540311)
+Picture 5: Adding a DEC converter to the Jukebox Simulator. Purchased from Wallboxplayer.com
+
 ![image](https://user-images.githubusercontent.com/85778633/167696490-ed3a80ea-5647-4ccc-8ff1-96f35bcd1bf2.png)
-Picture 5: Third release for a Seeburg Consolette SC1 using space inside the wallbox where typically the album pricing unit is placed.
+Picture 6: Third release for a Seeburg Consolette SC1 using space inside the wallbox where typically the album pricing unit is placed.
 
 Code implementation: Clone the repository and Compiling
 
