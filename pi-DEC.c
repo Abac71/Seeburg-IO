@@ -14,10 +14,10 @@
 
 // Which GPIO pins we're using:
 
-#define DEC_A0_IN 22  // GPIO22 DEC A 0 
-#define DEC_B1_IN 23  // GPIO23 DEC B 1 
-#define DEC_C2_IN 24  // GPIO24 DEC C 2 
-#define DEC_D3_IN 25  // GPIO25 DEC D 3 
+#define DEC_A0_IN 22  // GPIO22 DEC_A0 
+#define DEC_B1_IN 23  // GPIO23 DEC_B1 
+#define DEC_C2_IN 24  // GPIO24 DEC_C2 
+#define DEC_D3_IN 25  // GPIO25 DEC_D3
 
 //Init
     wiringPiSetup();
@@ -33,7 +33,6 @@
     pinMode(DEC_D3_IN, INPUT);  // DEC D 25
     pullUpDnControl(DEC_D3_IN, PUD_UP);
 
-
 // The waitloop waiting for signalpulse to happen:
 
     if (config.input_device == DEVICE_DEC_D) {
@@ -44,10 +43,7 @@
       } while (((millis() - now) < (unsigned long)timeout) and (dec_check == 0) and (digitalRead(INPINCANCEL) != HIGH));
     }
 
-
-===================================================================================
-... read dec pulse:
-
+// read dec pulse:
 
 byte ReadDecPulse() {
   byte quadribit = 0;
@@ -66,8 +62,7 @@ byte ReadDecPulse() {
   return (quadribit);
 }
 
-========================================================================
-... wait for DEC inputs to get to certain level until timout happens:
+// wait for DEC inputs to get to certain level until timout happens:
 
 int WaitDecLevel(int level, unsigned int timeout) {
   long counts = 0;
@@ -85,8 +80,7 @@ int WaitDecLevel(int level, unsigned int timeout) {
   return (counts);
 }
 
-==============================================================================
-... read content of DEC pulse:
+// read content of DEC pulse:
 
     if ((config.input_device==DEVICE_DEC_D) and (dec_input)) {
       dec_byte1 = ReadDecPulse();
@@ -118,5 +112,4 @@ int WaitDecLevel(int level, unsigned int timeout) {
         wallbox_letter_index = 0;
       }
     }
-
 
